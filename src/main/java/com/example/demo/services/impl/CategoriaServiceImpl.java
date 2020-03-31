@@ -1,8 +1,9 @@
 package com.example.demo.services.impl;
 
 
+
 import com.example.demo.model.Categoria;
-import com.example.demo.model.Cliente;
+
 import com.example.demo.repository.CategoriaRepository;
 import com.example.demo.services.ICategoriaService;
 
@@ -35,6 +36,9 @@ public class CategoriaServiceImpl implements ICategoriaService {
         ).orElse(false);
     }
 
+
+    @Override
+    public List<Categoria> consultarTodos(){return  categoriaRepository.findAll();}
 
 
 }
