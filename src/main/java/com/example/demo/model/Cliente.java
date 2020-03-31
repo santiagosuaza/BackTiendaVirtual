@@ -1,0 +1,113 @@
+package com.example.demo.model;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.util.Objects;
+
+public class Cliente {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private  Long idCLiente;
+    private String Usuario;
+    private String contraseña;
+    private String correo;
+    private Integer zip;
+    private String ciudad;
+    private String direccion;
+    private Integer  telefono;
+
+
+
+
+    public String getUsuario() {
+        return Usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        Usuario = usuario;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public Integer getZip() {
+        return zip;
+    }
+
+    public void setZip(Integer zip) {
+        this.zip = zip;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public Integer getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(Integer telefono) {
+        this.telefono = telefono;
+    }
+
+    public Long getIdCLiente() {
+        return idCLiente;
+    }
+
+    public void setIdCLiente(Long idCLiente) {
+        this.idCLiente = idCLiente;
+    }
+
+    public Cliente() {
+    }
+
+    public Cliente(String usuario, String contraseña, String correo, Integer zip, String ciudad, String direccion, Integer telefono) {
+        Usuario = usuario;
+        this.contraseña = contraseña;
+        this.correo = correo;
+        this.zip = zip;
+        this.ciudad = ciudad;
+        this.direccion = direccion;
+        this.telefono = telefono;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Cliente)) return false;
+        Cliente cliente = (Cliente) o;
+        return Objects.equals(Usuario, cliente.Usuario) &&
+                Objects.equals(contraseña, cliente.contraseña);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(Usuario, contraseña);
+    }
+}
