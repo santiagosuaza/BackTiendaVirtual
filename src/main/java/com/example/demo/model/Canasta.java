@@ -1,10 +1,12 @@
 package com.example.demo.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.annotation.sql.DataSourceDefinition;
+import javax.persistence.*;
 import java.util.Date;
+import lombok.Data;
+@Entity
+@Data
+@Table(name = "Canasta")
 
 public class Canasta {
 

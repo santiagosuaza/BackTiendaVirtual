@@ -1,8 +1,14 @@
 package com.example.demo.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+import lombok.Data;
+@Entity
+@Data
+@Table(name = "ProductoCanasta")
 public class ProductoCanasta {
     @Id
     @Column(name = "Producto")

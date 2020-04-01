@@ -1,10 +1,13 @@
 package com.example.demo.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.Objects;
+import lombok.Data;
 
+import javax.persistence.*;
+import java.util.Objects;
+import lombok.Data;
+@Entity
+@Data
+@Table(name = "Cliente")
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
