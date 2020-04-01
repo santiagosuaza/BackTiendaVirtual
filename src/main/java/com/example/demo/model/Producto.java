@@ -7,16 +7,19 @@ import java.util.Objects;
 public class Producto {
     @Id
     @Column(name = "Producto")
-    private String IdProducto;
+    private Long idProducto;
     @Column(name = "Categoria")
-    private String idCategoria;
+    private Long idCategoria;
     private String nombre;
     private Integer cantidad;
     private String detalle;
     private Double precio;
 
-    public Producto(String idProducto, String idCategoria, String nombre, Integer cantidad, String detalle, Double precio) {
-        IdProducto = idProducto;
+    public Producto() {
+    }
+
+    public Producto(Long idProducto, Long idCategoria, String nombre, Integer cantidad, String detalle, Double precio) {
+        idProducto = idProducto;
         this.idCategoria = idCategoria;
         this.nombre = nombre;
         this.cantidad = cantidad;
@@ -24,22 +27,19 @@ public class Producto {
         this.precio = precio;
     }
 
-    public Producto() {
+    public Long getidProducto() {
+        return idProducto;
     }
 
-    public String getIdProducto() {
-        return IdProducto;
+    public void setIdProducto(Long idProducto) {
+        idProducto = idProducto;
     }
 
-    public void setIdProducto(String idProducto) {
-        IdProducto = idProducto;
-    }
-
-    public String getIdCategoria() {
+    public Long getIdCategoria() {
         return idCategoria;
     }
 
-    public void setIdCategoria(String idCategoria) {
+    public void setIdCategoria(Long idCategoria) {
         this.idCategoria = idCategoria;
     }
 

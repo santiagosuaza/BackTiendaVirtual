@@ -8,7 +8,7 @@ import java.util.Objects;
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long idCLiente;
+    private  Long idCliente;
     private String Usuario;
     private String contraseña;
     private String correo;
@@ -17,8 +17,26 @@ public class Cliente {
     private String direccion;
     private Integer  telefono;
 
+    public Cliente() {
+    }
 
+    public Cliente(String usuario, String contraseña, String correo, Integer zip, String ciudad, String direccion, Integer telefono) {
+        Usuario = usuario;
+        this.contraseña = contraseña;
+        this.correo = correo;
+        this.zip = zip;
+        this.ciudad = ciudad;
+        this.direccion = direccion;
+        this.telefono = telefono;
+    }
 
+    public Long getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(Long idCliente) {
+        this.idCliente = idCliente;
+    }
 
     public String getUsuario() {
         return Usuario;
@@ -73,27 +91,6 @@ public class Cliente {
     }
 
     public void setTelefono(Integer telefono) {
-        this.telefono = telefono;
-    }
-
-    public Long getIdCLiente() {
-        return idCLiente;
-    }
-
-    public void setIdCLiente(Long idCLiente) {
-        this.idCLiente = idCLiente;
-    }
-
-    public Cliente() {
-    }
-
-    public Cliente(String usuario, String contraseña, String correo, Integer zip, String ciudad, String direccion, Integer telefono) {
-        Usuario = usuario;
-        this.contraseña = contraseña;
-        this.correo = correo;
-        this.zip = zip;
-        this.ciudad = ciudad;
-        this.direccion = direccion;
         this.telefono = telefono;
     }
 

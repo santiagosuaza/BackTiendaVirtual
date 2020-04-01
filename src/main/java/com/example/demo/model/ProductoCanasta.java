@@ -6,33 +6,33 @@ import javax.persistence.Id;
 public class ProductoCanasta {
     @Id
     @Column(name = "Producto")
-    private String idProducto;
+    private Long idProducto;
     @Column(name = "Canasta")
-    private String idCanasta;
+    private Long idCanasta;
     private  Integer cantidad;
 
     public ProductoCanasta() {
     }
 
-    public ProductoCanasta(String idProducto, String idCanasta, Integer cantidad) {
+    public ProductoCanasta(Long idProducto, Long idCanasta, Integer cantidad) {
         this.idProducto = idProducto;
         this.idCanasta = idCanasta;
         this.cantidad = cantidad;
     }
 
-    public String getIdProducto() {
+    public Long getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(String idProducto) {
+    public void setIdProducto(Long idProducto) {
         this.idProducto = idProducto;
     }
 
-    public String getIdCanasta() {
+    public Long getIdCanasta() {
         return idCanasta;
     }
 
-    public void setIdCanasta(String idCanasta) {
+    public void setIdCanasta(Long idCanasta) {
         this.idCanasta = idCanasta;
     }
 

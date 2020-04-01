@@ -12,7 +12,7 @@ public class Canasta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long idCanasta;
     @Column(name = "Cliente")
-    private String idCliente;
+    private Long idCliente;
     private Date fecha;
     private String direccion;
     private String Medellin;
@@ -22,7 +22,7 @@ public class Canasta {
     public Canasta() {
     }
 
-    public Canasta(String idCliente, Date fecha, String direccion, String medellin, Integer zip) {
+    public Canasta(Long idCliente, Date fecha, String direccion, String medellin, Integer zip) {
         this.idCliente = idCliente;
         this.fecha = fecha;
         this.direccion = direccion;
@@ -38,11 +38,11 @@ public class Canasta {
         this.idCanasta = idCanasta;
     }
 
-    public String getIdCliente() {
+    public Long getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(String idCliente) {
+    public void setIdCliente(Long idCliente) {
         this.idCliente = idCliente;
     }
 
