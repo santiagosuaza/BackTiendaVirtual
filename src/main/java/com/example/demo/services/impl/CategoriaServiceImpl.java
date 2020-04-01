@@ -6,9 +6,10 @@ import com.example.demo.model.Categoria;
 
 import com.example.demo.repository.CategoriaRepository;
 import com.example.demo.services.ICategoriaService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class CategoriaServiceImpl implements ICategoriaService {
     private CategoriaRepository categoriaRepository;
     public CategoriaServiceImpl(CategoriaRepository categoriaRepository){
