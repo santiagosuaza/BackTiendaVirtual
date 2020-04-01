@@ -14,7 +14,7 @@ public class ProductoCanastaController {
     private  IProductoCanastaService productoCanastaService;
 
     @PostMapping("/tienda/agregarProductoCanasta")
-    public ProductoCanasta add(@RequestBody ProductoCanasta productoCanasta){
+    public ProductoCanasta crear(@RequestBody ProductoCanasta productoCanasta){
         return productoCanastaService.crear(productoCanasta);
     }
 

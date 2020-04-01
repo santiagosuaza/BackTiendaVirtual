@@ -14,7 +14,7 @@ public class ProductoController {
    private IProductoService productoService;
 
     @PostMapping("/tienda/agregarProducto")
-    public Producto add(@RequestBody Producto producto){
+    public Producto crear(@RequestBody Producto producto){
         return productoService.crear(producto);
     }
 
@@ -26,6 +26,6 @@ public class ProductoController {
         return productoService.eliminar(id);
     }
     @GetMapping("/tienda/ConsultarTodosCliente")
-    public List<Producto> consultarTodos(){ return productoService.consultarTodos();}
+    public List<Producto>consultarTodos(){ return productoService.consultarTodos();}
 
 }

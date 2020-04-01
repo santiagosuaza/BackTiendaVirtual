@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 public class CanastaController {
     @Autowired
     private  ICanastaService canastaService;
 
     @PostMapping("/tienda/agregarCanasta")
-    public Canasta add(@RequestBody Canasta canasta){
+    public Canasta crear(@RequestBody Canasta canasta){
         return canastaService.crear(canasta);
     }
 

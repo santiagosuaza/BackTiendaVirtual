@@ -14,7 +14,7 @@ public class CategoriaController {
     private  ICategoriaService categoriaService;
 
     @PostMapping("/tienda/agregarCanasta")
-    public Categoria add(@RequestBody Categoria categoria){
+    public Categoria crear(@RequestBody Categoria categoria){
         return categoriaService.crear(categoria);
     }
 

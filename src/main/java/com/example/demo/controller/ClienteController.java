@@ -15,7 +15,7 @@ public class ClienteController {
     private IClienteService clienteService;
 
     @PostMapping("/tienda/agregarCliente")
-    public Cliente add(@RequestBody Cliente cliente){
+    public Cliente crear(@RequestBody Cliente cliente){
         return clienteService.crear(cliente);
     }
 
