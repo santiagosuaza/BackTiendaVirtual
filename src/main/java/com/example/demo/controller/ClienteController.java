@@ -10,10 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin (origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 public class ClienteController {
     @Autowired
-    IClienteService clienteService;
+    private IClienteService clienteService;
 
     @PostMapping("/tienda/agregarCliente")
     public Cliente add(@RequestBody Cliente cliente){

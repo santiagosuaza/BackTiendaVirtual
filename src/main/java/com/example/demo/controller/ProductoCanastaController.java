@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @RestController
-@CrossOrigin (origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 public class ProductoCanastaController {
     @Autowired
-    IProductoCanastaService productoCanastaService;
+    private  IProductoCanastaService productoCanastaService;
 
     @PostMapping("/tienda/agregarProductoCanasta")
     public ProductoCanasta add(@RequestBody ProductoCanasta productoCanasta){

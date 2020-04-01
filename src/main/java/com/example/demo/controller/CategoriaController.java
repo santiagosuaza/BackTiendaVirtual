@@ -9,10 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 public class CategoriaController {
     @Autowired
-    ICategoriaService categoriaService;
+    private  ICategoriaService categoriaService;
 
     @PostMapping("/tienda/agregarCanasta")
     public Categoria add(@RequestBody Categoria categoria){
