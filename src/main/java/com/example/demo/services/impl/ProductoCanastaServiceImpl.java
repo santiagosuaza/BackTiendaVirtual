@@ -7,29 +7,31 @@ import com.example.demo.services.IProductoCanastaService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class ProductoCanastaServiceImpl implements IProductoCanastaService {
 
     private ProductoCanastaRepository productoCanastaRepository;
+
     public ProductoCanastaServiceImpl(
-            ProductoCanastaRepository productoCanastaRepository){
+            ProductoCanastaRepository productoCanastaRepository) {
         this.productoCanastaRepository = productoCanastaRepository;
     }
 
     @Override
-    public ProductoCanasta crear(ProductoCanasta productoCanasta){
+    public ProductoCanasta crear(ProductoCanasta productoCanasta) {
         productoCanastaRepository.save(productoCanasta);
         return productoCanasta;
     }
 
     @Override
-    public  ProductoCanasta consultar(Long id){
+    public ProductoCanasta consultar(Long id) {
         return productoCanastaRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid User Id" + id));
     }
 
     @Override
-    public  boolean eliminar(Long id){
-        return  productoCanastaRepository.findById(id).map(
+    public boolean eliminar(Long id) {
+        return productoCanastaRepository.findById(id).map(
                 productoCanasta -> {
                     productoCanastaRepository.delete(productoCanasta);
                     return true;
@@ -38,6 +40,8 @@ public class ProductoCanastaServiceImpl implements IProductoCanastaService {
     }
 
     @Override
-    public List<ProductoCanasta> consultarTodos(){return  productoCanastaRepository.findAll();}
+    public List<ProductoCanasta> consultarTodos() {
+        return productoCanastaRepository.findAll();
+    }
 
 }

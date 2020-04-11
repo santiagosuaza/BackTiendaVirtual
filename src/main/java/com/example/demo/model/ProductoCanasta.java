@@ -1,21 +1,31 @@
 package com.example.demo.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.Data;
+
+import java.util.Objects;
+
 @Entity
 @Data
-@Table(name = "ProductoCanasta")
+@IdClass(ProductoCanastaKey.class)
 public class ProductoCanasta {
+
     @Id
-    @Column(name = "Producto")
-    private Long idProducto;
-    @Column(name = "Canasta")
-    private Long idCanasta;
-    private  Integer cantidad;
+    Long idProducto;
+
+    @Id
+    Long idCanasta;
+
+    @ManyToOne
+    @JoinColumn(name = "canasta_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private Canasta canasta;
+
+    @ManyToOne
+    @JoinColumn(name = "producto_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private Producto producto;
+
+    private Integer cantidad;
 
     public ProductoCanasta() {
     }
@@ -26,27 +36,17 @@ public class ProductoCanasta {
         this.cantidad = cantidad;
     }
 
-    public Long getIdProducto() {
-        return idProducto;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductoCanasta that = (ProductoCanasta) o;
+        return Objects.equals(idProducto, that.idProducto) &&
+                Objects.equals(idCanasta, that.idCanasta);
     }
 
-    public void setIdProducto(Long idProducto) {
-        this.idProducto = idProducto;
-    }
-
-    public Long getIdCanasta() {
-        return idCanasta;
-    }
-
-    public void setIdCanasta(Long idCanasta) {
-        this.idCanasta = idCanasta;
-    }
-
-    public Integer getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
+    @Override
+    public int hashCode() {
+        return Objects.hash(idProducto, idCanasta);
     }
 }
