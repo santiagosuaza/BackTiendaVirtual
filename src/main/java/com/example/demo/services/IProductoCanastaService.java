@@ -13,4 +13,6 @@ public interface IProductoCanastaService {
     List<ProductoCanasta> consultarTodos();
 
     boolean eliminar(Long id);
+
+    List<ProductoCanasta>consultarPorProducto(Long id);
 }

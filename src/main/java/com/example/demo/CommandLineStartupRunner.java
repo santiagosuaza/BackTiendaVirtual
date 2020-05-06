@@ -26,20 +26,6 @@ public class CommandLineStartupRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        //CLIENTES
 
-        Cliente cliente = clienteService.crear(new Cliente("juanda", "123", "000", 0, "Med", "cr 28", 123));
-
-        //CATEGORIAS
-        Categoria categoria = categoriaService.crear(new Categoria("Prueba"));
-
-        //PRODUCTOS
-        Producto producto = productoService.crear(new Producto(categoria.getIdCategoria(), "Taladro", 3, "Melo", 50000.0));
-
-        //CANASTA
-        Canasta canasta = canastaService.crear(new Canasta(cliente.getIdCliente(), new Date(), "cr 27sa", "asd"));
-
-        //DETALLE CANASTA
-        detalleCanastaService.crear(new ProductoCanasta(producto.getId(),canasta.getId(),1));
     }
 }

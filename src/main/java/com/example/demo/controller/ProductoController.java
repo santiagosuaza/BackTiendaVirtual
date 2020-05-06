@@ -28,9 +28,13 @@ public class ProductoController {
         return productoService.eliminar(id);
     }
 
-    @GetMapping("/tienda/ConsultarTodosCliente")
-    public List<Producto> consultarTodos() {
-        return productoService.consultarTodos();
-    }
+    @GetMapping("/tienda/Productos")
+    public List<Producto> consultarTodos() { return productoService.consultarTodos();}
 
+    @GetMapping("/tienda/productoCategoria/{id}")
+    public  List<Producto> consultarPorCategorias(@PathVariable("id")Long id){return productoService.consultarPorCategorias(id);}
+
+    @GetMapping("/tienda/productoBuscar/{id}")
+    public  List<Producto> consultarPorCategorias(@PathVariable("id")String id){return productoService.buscarProducto(id);}
 }
+

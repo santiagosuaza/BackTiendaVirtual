@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -22,28 +23,24 @@ public class Canasta {
     private Date fecha;
     private String direccion;
     private String ciudad;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String numeroCanasta;
 
+
+    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "canasta")
     private List<ProductoCanasta> productoCanastas = new ArrayList<>();
 
-    public Canasta(Long idCliente, Date fecha, String direccion, String ciudad) {
+    public Canasta(Long idCliente, Date fecha, String direccion, String ciudad, String numeroCanasta) {
         this.idCliente = idCliente;
         this.fecha = fecha;
         this.direccion = direccion;
         this.ciudad = ciudad;
+        this.numeroCanasta= numeroCanasta;
+    }
+    public Canasta() {
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Canasta canasta = (Canasta) o;
-        return Objects.equals(id, canasta.id) &&
-                Objects.equals(idCliente, canasta.idCliente);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, idCliente);
-    }
+
 }

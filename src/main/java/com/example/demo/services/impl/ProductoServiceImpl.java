@@ -6,6 +6,7 @@ import com.example.demo.repository.ProductoRepository;
 import com.example.demo.services.IProductoService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,6 +23,7 @@ public class ProductoServiceImpl implements IProductoService {
         productoRepository.save(producto);
         return producto;
     }
+
 
     @Override
     public Producto consultar(Long id) {
@@ -42,6 +44,23 @@ public class ProductoServiceImpl implements IProductoService {
     public List<Producto> consultarTodos() {
         return productoRepository.findAll();
     }
+
+    @Override
+    public List<Producto> consultarPorCategorias(Long id){
+       return productoRepository.findByIdCategoria(id);
+    }
+
+    @Override
+    public  List<Producto> buscarProducto(String id){
+        List<Producto> productos =new ArrayList<>();
+        for(Producto producto : productoRepository.findAll()){
+            if((producto.getNombre().toLowerCase().indexOf(id) !=1)){
+                productos.add(producto);
+            }
+        }
+        return  productoRepository.findByNombre(id);
+    }
+
 
 
 }

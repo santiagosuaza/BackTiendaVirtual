@@ -43,5 +43,9 @@ public class ProductoCanastaServiceImpl implements IProductoCanastaService {
     public List<ProductoCanasta> consultarTodos() {
         return productoCanastaRepository.findAll();
     }
+    @Override
+    public List<ProductoCanasta> consultarPorProducto(Long id) {
+        return  productoCanastaRepository.findByIdProducto(id);
+    }
 
 }

@@ -28,7 +28,7 @@ public class CanastaController {
         return canastaService.eliminar(id);
     }
 
-    @GetMapping("/tienda/ConsultarTodosCanasta")
+    @GetMapping("/tienda/Canastas")
     public List<Canasta> consultarTodos() {
         return canastaService.consultarTodos();
     }

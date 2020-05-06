@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import java.util.Objects;
@@ -11,17 +12,19 @@ import java.util.Objects;
 @IdClass(ProductoCanastaKey.class)
 public class ProductoCanasta {
 
-    @Id
+
     Long idProducto;
 
     @Id
     Long idCanasta;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "canasta_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Canasta canasta;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "producto_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Producto producto;
 
