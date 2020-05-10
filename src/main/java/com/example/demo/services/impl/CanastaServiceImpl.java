@@ -2,6 +2,7 @@ package com.example.demo.services.impl;
 
 
 import com.example.demo.model.Canasta;
+import com.example.demo.model.Producto;
 import com.example.demo.repository.CanastaRepository;
 import com.example.demo.services.ICanastaService;
 import org.springframework.stereotype.Service;

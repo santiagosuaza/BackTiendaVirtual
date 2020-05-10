@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 
 
+import com.example.demo.model.Producto;
 import com.example.demo.model.ProductoCanasta;
 import com.example.demo.services.IProductoCanastaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,9 @@ public class ProductoCanastaController {
     public List<ProductoCanasta> consultarTodos() {
         return productoCanastaService.consultarTodos();
     }
+
+    @GetMapping("/tienda/consultarProductosCanasta/{id}")
+    public List<Producto> consultarProductosCannasta(@PathVariable("id") Long id){return productoCanastaService.consultarProductosDeCanasta(id);}
 
 
 }

@@ -12,12 +12,14 @@ import java.util.Objects;
 @IdClass(ProductoCanastaKey.class)
 public class ProductoCanasta {
 
-
+    @Id
+    @Column(name="id_producto")
     Long idProducto;
 
-    @Id
+    @Column(name="id_canasta")
     Long idCanasta;
 
+    private Integer cantidad;
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "canasta_id", referencedColumnName = "id", insertable = false, updatable = false)
@@ -28,7 +30,7 @@ public class ProductoCanasta {
     @JoinColumn(name = "producto_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Producto producto;
 
-    private Integer cantidad;
+
 
     public ProductoCanasta() {
     }
@@ -51,5 +53,13 @@ public class ProductoCanasta {
     @Override
     public int hashCode() {
         return Objects.hash(idProducto, idCanasta);
+    }
+
+    public Long getIdCanasta() {
+        return idCanasta;
+    }
+
+    public Long getIdProducto() {
+        return idProducto;
     }
 }

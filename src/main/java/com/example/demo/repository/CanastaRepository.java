@@ -8,5 +8,6 @@ import java.util.List;
 
 @Repository
 public interface CanastaRepository extends JpaRepository<Canasta, Long> {
+    List<Canasta> findByNumeroCanasta(Long id);
 
 }

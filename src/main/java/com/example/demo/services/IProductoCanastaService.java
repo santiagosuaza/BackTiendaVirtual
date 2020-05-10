@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 
+import com.example.demo.model.Producto;
 import com.example.demo.model.ProductoCanasta;
 
 import java.util.List;
@@ -14,5 +15,5 @@ public interface IProductoCanastaService {
 
     boolean eliminar(Long id);
 
-    List<ProductoCanasta>consultarPorProducto(Long id);
+    List<Producto>consultarProductosDeCanasta(Long id);
 }
