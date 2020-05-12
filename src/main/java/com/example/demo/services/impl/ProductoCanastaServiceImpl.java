@@ -56,7 +56,7 @@ public class ProductoCanastaServiceImpl implements IProductoCanastaService {
     public List<Producto> consultarProductosDeCanasta(Long id) {
         List<Producto> productos =new ArrayList<>();
         System.out.println(id);
-            for (ProductoCanasta productoCanasta : productoCanastaRepository.findAll()) {
+            for (ProductoCanasta productoCanasta : productoCanastaRepository.findAllByIdCanasta(id)) {
                   productos.add(productoService.consultar(productoCanasta.getIdProducto()));
 
             }

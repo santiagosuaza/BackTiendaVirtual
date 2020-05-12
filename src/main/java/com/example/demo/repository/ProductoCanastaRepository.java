@@ -12,7 +12,7 @@ import java.util.List;
 
 @Repository
 public interface ProductoCanastaRepository extends JpaRepository<ProductoCanasta, Long> {
-    //List<ProductoCanasta> findAllByIdCanasta(Long
+    List<ProductoCanasta> findAllByIdCanasta(Long id);
 
 
 }
