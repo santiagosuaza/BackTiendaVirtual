@@ -6,6 +6,6 @@ spring:
     username: root
     password: admin
   jpa:
-    hibernate.ddl-auto: update
+    hibernate.ddl-auto: update-create
     generate-ddl: true
     show-sql: true
