@@ -1,82 +1,46 @@
 package com.example.demo.model;
 
-import javax.annotation.sql.DataSourceDefinition;
-import javax.persistence.*;
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
+
 @Entity
 @Data
-@Table(name = "Canasta")
-
+@Table(name = "canasta")
 public class Canasta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long idCanasta;
-    @Column(name = "Cliente")
+    private Long id;
+
+    @Column(name = "cliente")
     private Long idCliente;
     private Date fecha;
     private String direccion;
-    private String Medellin;
-    private Integer Zip;
+    private String ciudad;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String numeroCanasta;
 
 
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "canasta")
+    private List<ProductoCanasta> productoCanastas = new ArrayList<>();
+
+    public Canasta(Long idCliente, Date fecha, String direccion, String ciudad, String numeroCanasta) {
+        this.idCliente = idCliente;
+        this.fecha = fecha;
+        this.direccion = direccion;
+        this.ciudad = ciudad;
+        this.numeroCanasta= numeroCanasta;
+    }
     public Canasta() {
     }
 
-    public Canasta(Long idCliente, Date fecha, String direccion, String medellin, Integer zip) {
-        this.idCliente = idCliente;
-        this.fecha = fecha;
-        this.direccion = direccion;
-        Medellin = medellin;
-        Zip = zip;
-    }
 
-    public Long getIdCanasta() {
-        return idCanasta;
-    }
 
-    public void setIdCanasta(Long idCanasta) {
-        this.idCanasta = idCanasta;
-    }
-
-    public Long getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(Long idCliente) {
-        this.idCliente = idCliente;
-    }
-
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public String getMedellin() {
-        return Medellin;
-    }
-
-    public void setMedellin(String medellin) {
-        Medellin = medellin;
-    }
-
-    public Integer getZip() {
-        return Zip;
-    }
-
-    public void setZip(Integer zip) {
-        Zip = zip;
-    }
 }

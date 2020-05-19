@@ -12,33 +12,36 @@ import java.util.List;
 public class ClienteServiceImpl implements IClienteService {
 
     private ClienteRepository clienteRepository;
-    public ClienteServiceImpl(ClienteRepository clienteRepository){
-      this.clienteRepository = clienteRepository;
+
+    public ClienteServiceImpl(ClienteRepository clienteRepository) {
+        this.clienteRepository = clienteRepository;
     }
 
     @Override
-    public Cliente crear(Cliente cliente){
+    public Cliente crear(Cliente cliente) {
         clienteRepository.save(cliente);
         return cliente;
     }
 
     @Override
-    public  Cliente consultar(Long id){
+    public Cliente consultar(Long id) {
         return clienteRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid User Id" + id));
     }
 
     @Override
-    public  boolean eliminar(Long id){
-        return  clienteRepository.findById(id).map(
+    public boolean eliminar(Long id) {
+        return clienteRepository.findById(id).map(
                 cliente -> {
                     clienteRepository.delete(cliente);
                     return true;
                 }
         ).orElse(false);
     }
-    @Override
-    public List<Cliente> consultarTodos(){return  clienteRepository.findAll();}
 
+    @Override
+    public List<Cliente> consultarTodos() {
+        return clienteRepository.findAll();
+    }
 
 
 }

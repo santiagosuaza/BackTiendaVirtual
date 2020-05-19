@@ -1,21 +1,36 @@
 package com.example.demo.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+
+import java.util.Objects;
+
 @Entity
 @Data
-@Table(name = "ProductoCanasta")
+@IdClass(ProductoCanastaKey.class)
 public class ProductoCanasta {
+
     @Id
-    @Column(name = "Producto")
-    private Long idProducto;
-    @Column(name = "Canasta")
-    private Long idCanasta;
-    private  Integer cantidad;
+    @Column(name="id_producto")
+    Long idProducto;
+
+    @Column(name="id_canasta")
+    Long idCanasta;
+
+    private Integer cantidad;
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "canasta_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private Canasta canasta;
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "producto_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private Producto producto;
+
+
 
     public ProductoCanasta() {
     }
@@ -26,27 +41,25 @@ public class ProductoCanasta {
         this.cantidad = cantidad;
     }
 
-    public Long getIdProducto() {
-        return idProducto;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductoCanasta that = (ProductoCanasta) o;
+        return Objects.equals(idProducto, that.idProducto) &&
+                Objects.equals(idCanasta, that.idCanasta);
     }
 
-    public void setIdProducto(Long idProducto) {
-        this.idProducto = idProducto;
+    @Override
+    public int hashCode() {
+        return Objects.hash(idProducto, idCanasta);
     }
 
     public Long getIdCanasta() {
         return idCanasta;
     }
 
-    public void setIdCanasta(Long idCanasta) {
-        this.idCanasta = idCanasta;
-    }
-
-    public Integer getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
+    public Long getIdProducto() {
+        return idProducto;
     }
 }

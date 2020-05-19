@@ -9,25 +9,29 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 public class CategoriaController {
     @Autowired
-    private  ICategoriaService categoriaService;
+    private ICategoriaService categoriaService;
 
-    @PostMapping("/tienda/agregarCanasta")
-    public Categoria crear(@RequestBody Categoria categoria){
+    @PostMapping("/tienda/categoria")
+    public Categoria crear(@RequestBody Categoria categoria) {
         return categoriaService.crear(categoria);
     }
 
-    @GetMapping("/tienda/consultarCanasta")
-    public Categoria consultar(@PathVariable("id") long id ){ return categoriaService.consultar(id);}
+    @GetMapping("/tienda/categoria/{id}")
+    public Categoria consultar(@PathVariable("id") long id) {
+        return categoriaService.consultar(id);
+    }
 
-    @DeleteMapping("/tienda/canasta/{id}")
-    public boolean eliminar (@PathVariable Long id){
+    @DeleteMapping("/tienda/categoria/{id}")
+    public boolean eliminar(@PathVariable Long id) {
         return categoriaService.eliminar(id);
     }
-    @GetMapping("/tienda/ConsultarTodosCanasta")
-    public List<Categoria> consultarTodos(){ return categoriaService.consultarTodos();}
+
+    @GetMapping("/tienda/categorias")
+    public List<Categoria> consultarTodos() {
+        return categoriaService.consultarTodos();
+    }
 
 
 }

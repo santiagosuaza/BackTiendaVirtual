@@ -9,24 +9,28 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 public class CanastaController {
     @Autowired
-    private  ICanastaService canastaService;
+    private ICanastaService canastaService;
 
-    @PostMapping("/tienda/agregarCanasta")
-    public Canasta crear(@RequestBody Canasta canasta){
+    @PostMapping("/tienda/canasta")
+    public Canasta crear(@RequestBody Canasta canasta) {
         return canastaService.crear(canasta);
     }
 
-    @GetMapping("/tienda/consultarCanasta")
-    public Canasta consultar(@PathVariable("id") long id ){ return canastaService.consultar(id);}
+    @GetMapping("/tienda/canasta/{id}")
+    public Canasta consultar(@PathVariable("id") long id) {
+        return canastaService.consultar(id);
+    }
 
     @DeleteMapping("/tienda/canasta/{id}")
-    public boolean eliminar (@PathVariable Long id){
+    public boolean eliminar(@PathVariable Long id) {
         return canastaService.eliminar(id);
     }
-    @GetMapping("/tienda/ConsultarTodosCanasta")
-    public List<Canasta> consultarTodos(){ return canastaService.consultarTodos();}
+
+    @GetMapping("/tienda/canastas")
+    public List<Canasta> consultarTodos() {
+        return canastaService.consultarTodos();
+    }
 
 }

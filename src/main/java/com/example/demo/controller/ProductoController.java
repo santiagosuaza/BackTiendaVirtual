@@ -9,24 +9,32 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 public class ProductoController {
     @Autowired
-   private IProductoService productoService;
+    private IProductoService productoService;
 
-    @PostMapping("/tienda/agregarProducto")
-    public Producto crear(@RequestBody Producto producto){
+    @PostMapping("/tienda/producto")
+    public Producto crear(@RequestBody Producto producto) {
         return productoService.crear(producto);
     }
 
-    @GetMapping("/tienda/consultarProducto")
-    public Producto consultar(@PathVariable("id") long id ){ return productoService.consultar(id);}
+    @GetMapping("/tienda/producto/{id}")
+    public Producto consultar(@PathVariable("id") long id) {
+        return productoService.consultar(id);
+    }
 
     @DeleteMapping("/tienda/producto/{id}")
-    public boolean eliminar (@PathVariable Long id){
+    public boolean eliminar(@PathVariable Long id) {
         return productoService.eliminar(id);
     }
-    @GetMapping("/tienda/ConsultarTodosCliente")
-    public List<Producto>consultarTodos(){ return productoService.consultarTodos();}
 
+    @GetMapping("/tienda/Productos")
+    public List<Producto> consultarTodos() { return productoService.consultarTodos();}
+
+    @GetMapping("/tienda/productoCategoria/{id}")
+    public  List<Producto> consultarPorCategorias(@PathVariable("id")Long id){return productoService.consultarPorCategorias(id);}
+
+    @GetMapping("/tienda/productoBuscar/{id}")
+    public  List<Producto> consultarPorCategorias(@PathVariable("id")String id){return productoService.buscarProducto(id);}
 }
+
